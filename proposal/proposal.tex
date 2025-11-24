@@ -1,0 +1,96 @@
+\documentclass[12pt,a4paper]{article}
+
+% ====== PACKAGES ======
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage[backend=biber,style=numeric,citestyle=numeric]{biblatex}
+
+\addbibresource{sources.bib}
+% ====== PAGE SETTINGS ======
+\geometry{margin=1in}
+\setstretch{1.3}
+
+\makeatletter
+\renewcommand{\maketitle}{
+	\begin{center}
+		{\LARGE \bfseries \@title \par}
+		\vskip 1em
+		{\large \@author \par}
+		\vskip 0.5em
+		{\@date}
+	\end{center}
+}
+\makeatother
+
+% ====== SECTION STYLE ======
+\titleformat{\section}{\large\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+
+% ====== TITLE INFO ======
+\title{\textbf{Ontologically Faithful Generation of Non-Player Character Dialogues
+	}\\[0.5em]
+}
+\author{
+	Sina Taheri Behrooz \\ 
+	MSc in Artificial Intelligence\\ 
+	Iran University of Science and Technology (IUST) \\
+	\vspace{0.3em}
+	\texttt{sina\_taheri@comp.iust.ac.ir}
+}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\thispagestyle{empty}
+	\newpage
+	
+	\setcounter{page}{1}
+	
+	\section{Introduction}
+	
+	One of the most important factors in creating believable and memorable characters in RPG games is the character dialogue. Dialogue serves as the primary medium through which players perceive character personalities, motivations, and emotions, shaping the overall narrative experience \cite{loyall1997believable}. However, Writing satisfactory dialogue requires time and effort from the game writers which in turn increases the development cost of games. Other than the cost and effort, the tree like structure of dialogue means because of the dependency between different nodes, a small change in the story creates a cascade of changes in the dialogue tree.
+	
+	Early attempts to address these challenges utilized procedural methods, such as finite-state machines (FSMs) and tree-based discourse generation frameworks \cite{strong2008npc}. While these methods provided structured control over dialogue flow, they generally failed to produce contextually rich or emotionally coherent conversations. 
+	
+	With the emergence of large language models (LLMs), new research has been done on the  creation of more natural, consistent, and context-aware character dialogue. Recent papers such as KNUDGE \cite{weir2024knudge} demonstrates that ontology-grounded dialogue generation can improve narrative consistency and factual correctness, while systems like LIGHT \cite{urbanek2019light} show that grounding dialogue in a simulated game world enhances coherence and immersion. 
+	
+	Building upon these developments, this project aims to explore ontology-informed generative approaches for automating NPC dialogue creation, reducing authoring costs while preserving believability and narrative consistency.
+	
+	\section{Data Sources}
+	The main data source for developing this project is the KNUDGE \cite{weir2024knudge} Dataset. This dataset contains 159 dialogue trees from 45 side quests of \textit{The Outer Worlds}. In this dataset, each dialogue has been tagged and annotated to form a tree like structure. Also specific interactions where progression is tied to character attributes have been marked via watching playthroughs. This dataset also contains support knowledge related to each entity required for generating dialogues. This support knowledge has been scraped from fan wikis related to the game.
+	
+	\section{Methodology}
+	The paper proposes 2 main methods for generating utterances. 
+	\begin{itemize}
+		\item \textbf{Node Dialogue Writer} : Generates utterance for a specific node in the dialogue tree.
+		\item \textbf{End-to-EndDialogueWriter} : Generates the whole dialogue tree at once.
+	\end{itemize}
+	Now the utterance generation model for these 2 methods is either a fine tuned model or an ICL\footnote{In Context Learning} based model.
+	The paper explicitly mentions that because of the limited data, fine-tuning a t5 large model did not yield the expected results. The ICL based model with the use of few shot learning proves to be a better choice. For providing exemplars and supporting facts for each generation, a BM25 retriever is used.
+	
+	\begin{figure}[h!]
+		\centering
+  		\includegraphics[width=0.5\linewidth]{end-to-end.jpg}
+  		\caption{End to end dialogue writer}
+	\end{figure}
+	
+	The validator ensures that enough of the Bios, Quest info and the exemplars is present in the generated dialogue, if not, the generation process is restarted. For generating dialogue via ICL, the GPT-3 model is used.
+	
+	A major setback of the current method is it's inability to generate consistent dialogue in cases where the supporting context for an entity (like main characters) is larger than the GPT-3 maximum context.
+	
+	\section{Conclusion}
+	 This proposal has explored the history of automated dialogue generation in games and reviewed one of the newest methods in this field. As mentioned, although robust in trees with limited context, the method fails if the supporting knowledge for a node exceeds the models context. This is a major gap of the mentioned method, which limits the models ability to write dialogue for characters with expansive background. 
+	 We hope to find methods that increase the models effectiveness in these scenarios and overall create a lighter version of this model by utilizing open source text generation models. The exact specification of these methods will be present in our completed proposal.
+	 
+	
+	\printbibliography[title={References}]
+	
+	\textbf{Note} : ChatGPT was used for generation of the proposal template and finding the base paper. Also, as mentioned, this proposal is not the final version and some parts might change until the final proposal deadline.
+	
+\end{document}

@@ -1,0 +1,269 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{loyall1997believable}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=f87814cfbf56a1c75837ea90bee5fbb8}{%
+           family={Loyall},
+           familyi={L\bibinitperiod},
+           given={A.\bibnamedelimi Bryan},
+           giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{f87814cfbf56a1c75837ea90bee5fbb8}
+      \strng{fullhash}{f87814cfbf56a1c75837ea90bee5fbb8}
+      \strng{fullhashraw}{f87814cfbf56a1c75837ea90bee5fbb8}
+      \strng{bibnamehash}{f87814cfbf56a1c75837ea90bee5fbb8}
+      \strng{authorbibnamehash}{f87814cfbf56a1c75837ea90bee5fbb8}
+      \strng{authornamehash}{f87814cfbf56a1c75837ea90bee5fbb8}
+      \strng{authorfullhash}{f87814cfbf56a1c75837ea90bee5fbb8}
+      \strng{authorfullhashraw}{f87814cfbf56a1c75837ea90bee5fbb8}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Believable agents: building interactive personalities}
+      \field{year}{1997}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:110639723
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:110639723
+      \endverb
+    \endentry
+    \entry{strong2008npc}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=0b71d5f11c66aa44d307b7a849c08ee5}{%
+           family={Strong},
+           familyi={S\bibinitperiod},
+           given={Charles\bibnamedelima R.},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=6860903aff3a9110600b92e8c1fb82c1}{%
+           family={Mateas},
+           familyi={M\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Palo Alto, CA, USA}%
+      }
+      \list{publisher}{1}{%
+        {AAAI Press}%
+      }
+      \strng{namehash}{bcde11725654d0d0d1cfc23e22e1ba67}
+      \strng{fullhash}{bcde11725654d0d0d1cfc23e22e1ba67}
+      \strng{fullhashraw}{bcde11725654d0d0d1cfc23e22e1ba67}
+      \strng{bibnamehash}{bcde11725654d0d0d1cfc23e22e1ba67}
+      \strng{authorbibnamehash}{bcde11725654d0d0d1cfc23e22e1ba67}
+      \strng{authornamehash}{bcde11725654d0d0d1cfc23e22e1ba67}
+      \strng{authorfullhash}{bcde11725654d0d0d1cfc23e22e1ba67}
+      \strng{authorfullhashraw}{bcde11725654d0d0d1cfc23e22e1ba67}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Presents algorithms for dynamic discourse structure generation to produce coherent and context-sensitive NPC dialogue in games.}
+      \field{booktitle}{Proceedings of the Fourth Artificial Intelligence and Interactive Digital Entertainment Conference (AIIDE 2008)}
+      \field{title}{Talking with NPCs: Towards Dynamic Generation of Discourse Structures}
+      \field{year}{2008}
+      \verb{urlraw}
+      \verb https://eis.ucsc.edu/papers/Strong_Mateas_-_AIIDE08.pdf
+      \endverb
+      \verb{url}
+      \verb https://eis.ucsc.edu/papers/Strong_Mateas_-_AIIDE08.pdf
+      \endverb
+      \keyw{npc dialogue,procedural generation,discourse structure,game ai}
+    \endentry
+    \entry{urbanek2019light}{inproceedings}{}{}
+      \name{author}{10}{}{%
+        {{hash=941e3456e6aaf03cc44ca3b2d8e2acac}{%
+           family={Urbanek},
+           familyi={U\bibinitperiod},
+           given={Jack},
+           giveni={J\bibinitperiod}}}%
+        {{hash=277117db6b938bd36379979ac719cc02}{%
+           family={Fan},
+           familyi={F\bibinitperiod},
+           given={Angela},
+           giveni={A\bibinitperiod}}}%
+        {{hash=0cf3ec76164d190258b742372fecf5af}{%
+           family={Karamcheti},
+           familyi={K\bibinitperiod},
+           given={Siddharth},
+           giveni={S\bibinitperiod}}}%
+        {{hash=8a0b39deb08a8499239c69e236dd13fb}{%
+           family={Jain},
+           familyi={J\bibinitperiod},
+           given={Saachi},
+           giveni={S\bibinitperiod}}}%
+        {{hash=9ff0a32c799d8ad13c246351153c06fc}{%
+           family={Humeau},
+           familyi={H\bibinitperiod},
+           given={Samuel},
+           giveni={S\bibinitperiod}}}%
+        {{hash=9d9aa89c5300a6b631bd2c11e1a5ecb5}{%
+           family={Dinan},
+           familyi={D\bibinitperiod},
+           given={Emily},
+           giveni={E\bibinitperiod}}}%
+        {{hash=b3ff4029884ead9928954ea33714192c}{%
+           family={Rocktäschel},
+           familyi={R\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod}}}%
+        {{hash=ca01c762f4a52dd8a8548508f8d727c9}{%
+           family={Kiela},
+           familyi={K\bibinitperiod},
+           given={Douwe},
+           giveni={D\bibinitperiod}}}%
+        {{hash=b31b3f03b1e1ee0eec6ff58f9a9df960}{%
+           family={Szlam},
+           familyi={S\bibinitperiod},
+           given={Arthur},
+           giveni={A\bibinitperiod}}}%
+        {{hash=417a25f3511d7c21e76d4a15e67dd679}{%
+           family={Weston},
+           familyi={W\bibinitperiod},
+           given={Jason},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Hong Kong, China}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computational Linguistics}%
+      }
+      \strng{namehash}{72a74927e9a276059199c019f65bff0d}
+      \strng{fullhash}{a3399fea5841863d443b765642f40655}
+      \strng{fullhashraw}{a3399fea5841863d443b765642f40655}
+      \strng{bibnamehash}{72a74927e9a276059199c019f65bff0d}
+      \strng{authorbibnamehash}{72a74927e9a276059199c019f65bff0d}
+      \strng{authornamehash}{72a74927e9a276059199c019f65bff0d}
+      \strng{authorfullhash}{a3399fea5841863d443b765642f40655}
+      \strng{authorfullhashraw}{a3399fea5841863d443b765642f40655}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Introduces LIGHT, a large-scale environment for studying grounded dialogue and action in fantasy text adventure games.}
+      \field{booktitle}{Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing (EMNLP) and the 9th International Joint Conference on Natural Language Processing (IJCNLP)}
+      \field{title}{Learning to Speak and Act in a Fantasy Text Adventure Game}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://aclanthology.org/D19-1062/
+      \endverb
+      \verb{url}
+      \verb https://aclanthology.org/D19-1062/
+      \endverb
+      \keyw{npc dialogue,grounded language,text adventure,emnlp}
+    \endentry
+    \entry{weir2024knudge}{inproceedings}{}{}
+      \name{author}{6}{}{%
+        {{hash=5a2d4d575acd3a365904d8f3263a171a}{%
+           family={Weir},
+           familyi={W\bibinitperiod},
+           given={Nathaniel},
+           giveni={N\bibinitperiod}}}%
+        {{hash=4927ae5f93dd4abf7d8c79c910bb2f44}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Ryan},
+           giveni={R\bibinitperiod}}}%
+        {{hash=d26def5372e9d9f92f47c9951460e6fe}{%
+           family={d{'}Amore},
+           familyi={d\bibinitperiod},
+           given={Randolph},
+           giveni={R\bibinitperiod}}}%
+        {{hash=282d651052e4b1a4a9139b947c97573c}{%
+           family={Hill},
+           familyi={H\bibinitperiod},
+           given={Kellie},
+           giveni={K\bibinitperiod}}}%
+        {{hash=f15e823579fd6b4dfcc53b5643a16510}{%
+           family={Van\bibnamedelima Durme},
+           familyi={V\bibinitperiod\bibinitdelim D\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=219ab413ffc946529f474d40a8413867}{%
+           family={Jhamtani},
+           familyi={J\bibinitperiod},
+           given={Harsh},
+           giveni={H\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=7eb9def9f3d526cbf037a76f79560ad7}{%
+           family={Al-Onaizan},
+           familyi={A\bibinithyphendelim O\bibinitperiod},
+           given={Yaser},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=b118f9d5c7ddaa3d38926cc7de6586e0}{%
+           family={Bansal},
+           familyi={B\bibinitperiod},
+           given={Mohit},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f0995e21442083712fc384a0a90860c4}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Yun-Nung},
+           giveni={Y\bibinithyphendelim N\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Miami, Florida, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computational Linguistics}%
+      }
+      \strng{namehash}{38d3edd25d93c11855a65653ac695ae9}
+      \strng{fullhash}{1ce7c28fb55ef8228e34d10c1e54c0ce}
+      \strng{fullhashraw}{1ce7c28fb55ef8228e34d10c1e54c0ce}
+      \strng{bibnamehash}{38d3edd25d93c11855a65653ac695ae9}
+      \strng{authorbibnamehash}{38d3edd25d93c11855a65653ac695ae9}
+      \strng{authornamehash}{38d3edd25d93c11855a65653ac695ae9}
+      \strng{authorfullhash}{1ce7c28fb55ef8228e34d10c1e54c0ce}
+      \strng{authorfullhashraw}{1ce7c28fb55ef8228e34d10c1e54c0ce}
+      \strng{editorbibnamehash}{ca52551328fd03e2b0d716629ba05200}
+      \strng{editornamehash}{ca52551328fd03e2b0d716629ba05200}
+      \strng{editorfullhash}{ca52551328fd03e2b0d716629ba05200}
+      \strng{editorfullhashraw}{ca52551328fd03e2b0d716629ba05200}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We introduce a language generation dataset grounded in a popular video game. KNUDGE (**KN**owledge Constrained **U**ser-NPC **D**ialogue **GE**neration) requires models to produce trees of dialogue between video game characters that accurately reflect quest and entity specifications stated in natural language. KNUDGE is constructed from side quest dialogues drawn directly from game data of Obsidian Entertainment{'}s {\_}The Outer Worlds{\_}, leading to real-world complexities in generation: (1) utterances must remain faithful to the game lore, including character personas and backstories; (2) a dialogue must accurately reveal new quest details to the human player; and (3) dialogues are large trees as opposed to linear chains of utterances. We report results for a set of neural generation models using supervised and in-context learning techniques; we find competent performance but room for future work addressing the challenges of creating realistic, game-quality dialogues.}
+      \field{booktitle}{Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing}
+      \field{month}{11}
+      \field{title}{Ontologically Faithful Generation of Non-Player Character Dialogues}
+      \field{year}{2024}
+      \field{pages}{9212\bibrangedash 9242}
+      \range{pages}{31}
+      \verb{doi}
+      \verb 10.18653/v1/2024.emnlp-main.520
+      \endverb
+      \verb{urlraw}
+      \verb https://aclanthology.org/2024.emnlp-main.520/
+      \endverb
+      \verb{url}
+      \verb https://aclanthology.org/2024.emnlp-main.520/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
