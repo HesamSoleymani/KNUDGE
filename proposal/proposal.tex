@@ -81,13 +81,7 @@ Our aim is to conduct an ablation study on effects of the following methods on t
 
 The goal of this project is to evaluate how graph serialization, prompt engineering, and modern LLMs influence the quality of dialogue-tree generation within the KNUDGE framework. All experiments will use the same base dataset and evaluation pipeline as the original KNUDGE paper to ensure comparability.
 \subsection{Graph Serialization}
-the base paper uses a JSON based graph serialization method. In this format, critical information about the graph such as the start and end nodes, general data about the quest and an edge list representing the dependencies is stored. We propose 3 representation methods for this data. After exemplars are retrieved using the BM-25 index, their representation will be changed based on the method we are using before being injected into the prompt.
-\begin{itemize}
-	\item \textbf{Adjacency List} : Each node explicitly lists all of it's neighboring nodes.
-	\item \textbf{Adjacency Matrix} : A 2d matrix is replaced with the edge list.
-	\item \textbf{GML} : Represent the whole document in a new graph specific format. Attributes of each dialogue will be inside GML node while each edge shows the relation between 2 nodes.
-\end{itemize}
-These formats allow us to test whether more structured or more explicit graph encodings improve the structural fidelity and ontology adherence of the generated graphs.
+The base paper first chooses the longest path of the dialogue-history sub-tree and uses it in the prompt to generate the next node. However, recent work on improved graph-serialization techniques for LLMs \cite{GraphLinearization}\cite{GraphBC} is something we plan to explore.
 
 \subsection{Prompt Engineering}
 There has been some research lately on improving an LLM's graph generation ability utilizing prompt engineering techniques \cite{demirci-etal-2025-llms}\cite{yao2024exploringpotentiallargelanguage}. The KNUDGE paper utilizes iterative prompting as a technique for generating end-to-end dialogue trees, we plan to study the effects of 2 other techniques :
