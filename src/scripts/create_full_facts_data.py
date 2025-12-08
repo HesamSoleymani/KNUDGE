@@ -51,6 +51,9 @@ def get_original_fact(walkthrough_text, index_length_str):
     '''
     Extracts the original fact text from the walkthrough text using the index:length format.
     '''
+    index_str, length_str = index_length_str.split(':')
+    if (not index_str.isdigit()) or (not length_str.isdigit()):
+        return ""
     index, length = map(int, index_length_str.split(':'))
     return walkthrough_text[index:index + length]
 

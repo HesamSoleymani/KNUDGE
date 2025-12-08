@@ -89,14 +89,38 @@ PLAYER SHOULD LEARN BY THE END OF THE DIALOG:
 
 TITLE = lambda x: x.replace("_", ' ').title()
 
-
+def get_objectives(json_dict, fact_tsv):
+    if "objectives" in json_dict:
+        return json_dict["objectives"]
+    else :
+        objectives = {}
+        data = pd.read_csv(fact_tsv, sep='\t')
+        #fact_id : O1_S2/ O3_B3
+        for fact_id in data['ID']:
+            if fact_id.startswith('O') and not 'OBJECTIVE' in fact_id:
+                obj_id = fact_id.split('_')[0]
+                # format : here it will be O1
+                if obj_id not in objectives:
+                    objectives[obj_id] = {}
+                    ## initialize description and blurb dicts
+                    if 'description' not in objectives[obj_id]:
+                        objectives[obj_id]['description'] = {}
+                    if 'blurb' not in objectives[obj_id]:
+                        objectives[obj_id]['blurb'] = {}
+                    ##
+                obj_fact = fact_id.split('_')[1]
+                if obj_fact.startswith('S'):
+                    objectives[obj_id]['description'][obj_fact] = data[data['ID'] == fact_id]['fact'].values[0]
+                elif obj_fact.startswith('B'):
+                    objectives[obj_id]['blurb'][obj_fact] = data[data['ID'] == fact_id]['fact'].values[0]
+        return objectives
+                     
 class OWDialog:
     def __init__(self, json_dict, fact_tsv=None, quest_list=sidequests, **kwargs):
         self.id = None
         self.quest_name = None
         self.json = json_dict
-        self.objectives = [x for x in writer_sidequests + sidequests
-                           if x['name'] == self.json['quest_name']][0]['objectives']
+        self.objectives = get_objectives(json_dict, fact_tsv)
         self.all_quest_objectives = copy.deepcopy(self.objectives)
         self.required_objective_keys = []
         self.dialog_edges = []
