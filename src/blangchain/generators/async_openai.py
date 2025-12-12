@@ -10,7 +10,7 @@ from typing import (
     Optional, Union, Dict,
 )
 
-from langchain import OpenAI
+from langchain.llms import OpenAI
 from langchain.callbacks.manager import (
     AsyncCallbackManagerForLLMRun,
 )
