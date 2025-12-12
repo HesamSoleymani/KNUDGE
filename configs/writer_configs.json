@@ -1,0 +1,29 @@
+{
+  "vanilla": {
+    "model_name": "vanilla",
+    "description": "Baseline model for generating dialogues",
+    "parameters": {
+      "gamma": 0.95,
+      "max_length": 10,
+      "seed": 42
+    }
+  },
+  "chatgpt-16k": {
+    "model_name": "chatgpt-16k",
+    "description": "ChatGPT model with 16k token limit",
+    "parameters": {
+      "gamma": 0.9,
+      "max_length": 15,
+      "seed": 42
+    }
+  },
+  "cot_full": {
+    "model_name": "cot_full",
+    "description": "Chain-of-thought full model for generating dialogues",
+    "parameters": {
+      "gamma": 0.85,
+      "max_length": 20,
+      "seed": 42
+    }
+  }
+}

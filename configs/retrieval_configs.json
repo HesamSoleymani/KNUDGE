@@ -1,0 +1,18 @@
+{
+  "node_annotations": {
+    "require_node_annotations": true,
+    "use_objectives": true,
+    "use_bios": false,
+    "exclude": ["test_quest_1", "test_quest_2"],
+    "corpus_keys": [],
+    "corpus_items": []
+  },
+  "base": {
+    "require_node_annotations": false,
+    "use_objectives": true,
+    "use_bios": true,
+    "exclude": [],
+    "corpus_keys": [],
+    "corpus_items": []
+  }
+}
