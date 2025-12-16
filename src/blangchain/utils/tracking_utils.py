@@ -62,10 +62,14 @@ class TokensTracker:
         '''
         model = llm_output.get('model_name', 'none')
         usage_data = llm_output.get('token_usage', {})
-        for k, v in usage_data.items():
-            TokensTracker.counter[model][k] += v
-            if module is not None:
-                TokensTracker.module_counter[module][model][k] += v
+        # Only update known token fields to avoid KeyError on unexpected fields
+        known_keys = ['prompt_tokens', 'completion_tokens', 'total_tokens']
+        for k in known_keys:
+            if k in usage_data:
+                v = usage_data[k]
+                TokensTracker.counter[model][k] += v
+                if module is not None:
+                    TokensTracker.module_counter[module][model][k] += v
         TokensTracker.total_calls += 1
         TokensTracker.total_calls_by_module[module] += 1
         if usage_data:

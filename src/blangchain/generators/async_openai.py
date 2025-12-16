@@ -72,6 +72,12 @@ async def acompletion_with_retry(llm: Union[ChatOpenAI, OpenAI], **kwargs: Any) 
 
 
 class JitterWaitOpenAI(OpenAI):
+    def __init__(self, *args, **kwargs):
+        # Set base URL for OpenAI API
+        if "openai_api_base" not in kwargs:
+            kwargs["openai_api_base"] = "https://api.metisai.ir/openai/v1"
+        super().__init__(*args, **kwargs)
+    
     async def _agenerate(
             self,
             prompts: List[str],
@@ -121,6 +127,12 @@ class JitterWaitOpenAI(OpenAI):
 
 
 class JitterWaitChatOpenAI(ChatOpenAI):
+    def __init__(self, *args, **kwargs):
+        # Set base URL for OpenAI API
+        if "openai_api_base" not in kwargs:
+            kwargs["openai_api_base"] = "https://api.metisai.ir/openai/v1"
+        super().__init__(*args, **kwargs)
+    
     async def _agenerate(
         self,
         messages: List[BaseMessage],

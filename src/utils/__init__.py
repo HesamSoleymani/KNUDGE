@@ -1,5 +1,5 @@
-from src.utils.list_utils import *
-from src.utils.io import *
-from src.utils.hashing import *
+from utils.list_utils import *
+from utils.io import *
+from utils.hashing import *
 
 

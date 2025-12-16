@@ -15,12 +15,12 @@ from blangchain.generators.openai_gpt import JSONOpenAIGenerator
 from npc_dialog.dialog_retrieval import DialogRetriever
 from npc_dialog.dialogwriter import DialogWriterModel
 from npc_dialog.owdialog import OWDialog
-from src.npc_dialog.knudge_dataset import KNUDGE
+from npc_dialog.knudge_dataset import KNUDGE
 import tiktoken
 import pandas as pd
 import logging
 
-from src.utils import remove_duplicates, create_path
+from utils import remove_duplicates, create_path
 
 logger = logging.getLogger(__name__)
 

@@ -10,7 +10,7 @@ from typing import Tuple, List, Optional, Dict
 
 import pandas as pd
 
-from src.utils import flatten, remove_duplicates, sha_hash
+from utils import flatten, remove_duplicates, sha_hash
 
 logger = logging.getLogger(__name__)
 __PATH__ = os.path.abspath(os.path.dirname(__file__))

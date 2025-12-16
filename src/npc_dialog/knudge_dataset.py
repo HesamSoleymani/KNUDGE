@@ -6,7 +6,7 @@ from typing import Dict
 
 import pandas as pd
 
-from src.npc_dialog.owdialog import OWDialog
+from npc_dialog.owdialog import OWDialog
 
 __PATH__ = os.path.abspath(os.path.dirname(__file__))
 QUEST_FILES = os.path.join(__PATH__, "../../data/OuterWorlds/quest_files")

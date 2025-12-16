@@ -98,15 +98,15 @@ class GPT3Client:
         # See https://semanticmachines.slack.com/archives/C017P5M1RSL/p1647450366073519?thread_ts=1646782663.584339&cid=C017P5M1RSL
         # Get keys here: https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/resource/subscriptions/b68b2f37-1d37-4c2f-80f6-c23de402792e/resourceGroups/fod/providers/Microsoft.CognitiveServices/accounts/smopenai/cskeys
         auth_header: HeaderTypes
+        base_url = "https://api.metisai.ir/openai/v1"
         if self.engine == "codex-cushman-sm":
             api_key = self._init_api_key("SM_OPENAI_API_KEY")
             self.completions_url = "https://smopenai.openai.azure.com/openai/deployments/codex-cushman/completions?api-version=2021-11-01-preview"
             auth_header = {"api-key": api_key}
         else:
             api_key = self._init_api_key("OPENAI_API_KEY")
-            self.completions_url = (
-                f"https://api.openai.com/v1/engines/{self.engine}/completions"
-            )
+            # Modern API format: /v1/completions with model parameter instead of /v1/engines/{engine}/completions
+            self.completions_url = f"{base_url}/completions"
             auth_header = {"Authorization": f"Bearer {api_key}"}
 
         self.http_client = httpx.AsyncClient(
@@ -138,9 +138,13 @@ class GPT3Client:
         Instrumentation.currently_pending_requests += 1
         Instrumentation.record_request(request_info)
         try:
+            # Modern API requires 'model' parameter instead of engine in URL
+            request_data = dict(args_without_engine)
+            if self.engine != "codex-cushman-sm" and "model" not in request_data:
+                request_data["model"] = self.engine
             response = await self.http_client.post(
                 self.completions_url,
-                json=args_without_engine,
+                json=request_data,
             )
         except httpx.RequestError as e:
             request_info.finish(False)
