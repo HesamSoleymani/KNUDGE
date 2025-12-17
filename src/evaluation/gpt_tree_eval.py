@@ -307,5 +307,41 @@ if __name__ == '__main__':
     gpt_results = asyncio.run(run())
     resdf = pd.DataFrame(flatten(gpt_results))
     TokensTracker.report()
-    from IPython import embed
-    embed(user_ns=locals())
+
+    # Save results if an output path was provided
+    if args.output_path:
+        from pathlib import Path
+
+        Path(args.output_path).parent.mkdir(parents=True, exist_ok=True)
+        try:
+            resdf.to_csv(args.output_path, index=False)
+            print(f"Wrote results CSV to {args.output_path}")
+        except Exception as e:
+            print(f"Failed to write CSV to {args.output_path}: {e}")
+
+        # also save the raw JSON results for debugging/inspection
+        try:
+            json_out = (
+                args.output_path
+                if args.output_path.endswith(".json")
+                else args.output_path.replace(".csv", ".json")
+            )
+            with open(json_out, "w", encoding="utf-8") as f:
+                json.dump(gpt_results, f, indent=2)
+            print(f"Wrote raw JSON results to {json_out}")
+        except Exception as e:
+            print(f"Failed to write raw JSON results to {json_out}: {e}")
+
+    # Enter interactive shell only when debugging is enabled
+    if args.debug:
+        try:
+            from IPython import embed
+
+            embed(user_ns=locals())
+        except Exception:
+            import traceback
+
+            traceback.print_exc()
+            print(
+                "IPython embed is not available; continuing without interactive shell."
+            )

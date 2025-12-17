@@ -584,7 +584,7 @@ if __name__ == "__main__":
     parser.add_argument('--out_dir', type=str, default='tmp/e2e_dialogs')
     parser.add_argument('--verbose', action='store_true')
     parser.add_argument('--no-validate', action='store_true')
-    parser.add_argument('--copy-gold', action='store_true')
+    parser.add_argument('--copy-gold', action='store_true', default=True)
 
     args = parser.parse_args()
     print(args)
