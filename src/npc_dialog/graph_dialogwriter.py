@@ -83,7 +83,7 @@ class GraphDialogWriterModel(JSONOpenAIGenerator, DialogWriterModel):
 
         self.few_shot_retrieval = None
         self.include_bio, self.include_objectives, self.include_participants = True, True, True
-        self.validate, self.add_flavor = config['validate'], False
+        self.validate, self.add_flavor = config['validate'], True
         self.include_support_facts = True
         self.max_context_size = 13000 if self.model_type in ['chatgpt-16k', 'gpt-4-1106-preview'] else (7500 if 'vicuna' in self.model_type else 5000)
         self.include_all_previous_objectives = False
@@ -177,7 +177,8 @@ class GraphDialogWriterModel(JSONOpenAIGenerator, DialogWriterModel):
             logger.info(f"Retry #{n_retries} with max_tokens={defaults['max_tokens']}")
             if n_retries > 5:
                 break
-
+            print("aaaaaaaaa run main generation")
+            #run1
             generations = await self.run(inputs, **defaults)
 
             meta['generations'].extend(generations)
@@ -215,6 +216,8 @@ class GraphDialogWriterModel(JSONOpenAIGenerator, DialogWriterModel):
                     current_quest_bio = self.dialog_prefix(self.dialog).get('bio', '')
                     current_quest_objectives = self.dialog_prefix(self.dialog).get('objectives', '')
                     lore = '\n\n'.join([current_quest_bio, current_quest_objectives]).strip()
+                    print("aaaaaaaaaa run flavor")
+                    #run2
                     flavor_revision = await self.flavor_revision_model.run(
                     [dict(
                         prefix=few_shot_prompt,
@@ -250,7 +253,8 @@ class GraphDialogWriterModel(JSONOpenAIGenerator, DialogWriterModel):
                         while not is_valid and n_revisions < 2:
                             n_revisions += 1
                             logger.info(f"Revision #{n_revisions}")
-
+                            print("aaaaaaaaaa run revision")
+                            #run3
                             revision = await self.revision_model.run(
                                 [dict(
                                     dialog='\n'.join(str(r) for r in ret),
