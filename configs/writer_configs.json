@@ -25,5 +25,14 @@
       "max_length": 20,
       "seed": 42
     }
+  },
+  "inline-validation": {
+    "model_name": "inline-validation",
+    "description": "inline-validation",
+    "parameters": {
+      "gamma": 0.85,
+      "max_length": 20,
+      "seed": 42
+    }
   }
 }

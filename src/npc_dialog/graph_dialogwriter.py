@@ -26,6 +26,8 @@ logger = logging.getLogger(__name__)
 
 DIALOG_PROMPT_IO = """{instructions}
 
+{verification}
+
 {prompt}"""
 
 SYSTEM_INSTRUCTIONS = """You are a writing assistant for a professional game developer. You are helping write "dialogue trees" between the player character and non-player characters in a space RPG. The RPG is intended to be full of dark humor and clever writing. 
@@ -60,6 +62,22 @@ Don't make the player utterances too long or complex. They should remain straigh
 Your output should match the format of the dialog: one json item per line, with each item being either a node or an edge. The node items should have the format {{"type": "node", "id": <node id>, "speaker": <speaker>, "utterance": <utterance>}}. {support_knowledge_additional_instruction}The edge items should have the format {{"type": "edge", "from": <source node id>, "to": <target node id>}}. The first node in the graph should be the first node in the dialog. Do not include anything else in your output other than the json items.
 """
 
+VERIFICATION_SCRIPT = """Verification script: when generating the dialog JSON, follow these checks and use them to guide construction and repair. Refer to this during generation and ensure final output satisfies them.
+
+- Each output line must be a single valid JSON object with key `type` equal to `node` or `edge`.
+- Node objects must include exactly these required fields: `type`, `id`, `speaker`, `utterance`. They may optionally include `support_knowledge` (a list of lore ids).
+- Edge objects must include exactly these fields: `type`, `from`, `to`.
+- No duplicate node ids.
+- Every edge `from` and `to` must reference an existing node id in the same output.
+- The graph must be connected: every node except the first should have at least one incoming edge.
+- Avoid long linear chains of single-child nodes (target maximum linear chain length: 7). Break chains into branches.
+- Dialog should contain at least 5 nodes.
+- Player nodes (speaker == "player") must have at most one outgoing edge.
+- Non-player nodes should not have more than one outgoing edge that points to another non-player node.
+
+If any check would be violated, modify/add/remove nodes or edges so the final JSON obeys these rules. Output only the JSON objects (one per line) and nothing else.
+"""
+
 ADDITIONAL_SUPPORT_INSTRUCTION = "If you add new lore facts to a dialog node, append their id to the \"support_knowledge\" field of the json. For example, if you add a new lore fact with id \"Lore_1234\", then the json for that node should have the field \"support_knowledge\": [\"Lore_1234\", ...]. "
 
 VICUNA_ANTI_NOISE_PROMPT="""
@@ -83,7 +101,7 @@ class GraphDialogWriterModel(JSONOpenAIGenerator, DialogWriterModel):
 
         self.few_shot_retrieval = None
         self.include_bio, self.include_objectives, self.include_participants = True, True, True
-        self.validate, self.add_flavor = config['validate'], True
+        self.validate, self.add_flavor = config['validate'], False
         self.include_support_facts = True
         self.max_context_size = 13000 if self.model_type in ['chatgpt-16k', 'gpt-4-1106-preview'] else (7500 if 'vicuna' in self.model_type else 5000)
         self.include_all_previous_objectives = False
@@ -157,7 +175,7 @@ class GraphDialogWriterModel(JSONOpenAIGenerator, DialogWriterModel):
         """
         curr_prefix = self.dialog_prefix(self.dialog)
         few_shot_prompt = self.construct_few_shot_prompt(prompt_dict=curr_prefix, max_start_nodes=max_start_nodes)
-        inputs = [dict(instructions=SYSTEM_INSTRUCTIONS, prompt=few_shot_prompt)]
+        inputs = [dict(instructions=SYSTEM_INSTRUCTIONS, verification=VERIFICATION_SCRIPT, prompt=few_shot_prompt)]
         defaults = {
             'max_tokens': 3000,
             'temperature': 0.7,
@@ -580,7 +598,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--test-dialog-id', type=str, nargs='+', default=['a_family_matter_00'])
     parser.add_argument('--model', type=str, default='chatgpt-16k')
-    parser.add_argument('--config-name', type=str, default='cot_full')
+    parser.add_argument('--config-name', type=str, default='inline-validation')
     parser.add_argument('--debug', action='store_true')
     parser.add_argument('--prompt-hacking', action='store_true')
     parser.add_argument('--include-all-previous-objectives', action='store_true')
