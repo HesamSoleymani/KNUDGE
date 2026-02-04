@@ -1,0 +1,18 @@
+we use graph_dialogwriter.py
+focusing on the "main" part
+there are some arguments that have default values and can be overwritten when entering command in terminal
+command:
+PYTHONPATH=. OPENAI_API_KEY=to_be_filled_from_metisai.ir  python src/npc_dialog/graph_dialogwriter.py
+from which model the code is using to generate?
+it can be find if we take a look at blangchain(why they've added a "b" to the name?!!)/generators/openai_gpt.py
+and take a look at chat_model_map: 'chatgpt-16k': "gpt-3.5-turbo-16k",
+
+how many models (not model types) do we have?
+1-?
+2-structure revision model (called revision_model)
+3-flavor revision model
+
+model runs:
+1- generations = await self.run(inputs, **defaults)
+2- revision = await self.revision_model.run...
+3- flavor_revision = await self.flavor_revision_model.run...
